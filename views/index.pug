@@ -1,0 +1,16 @@
+block content
+  h1= title
+  p Welcome to lab 10  #{title}
+  p This is PUG Lab 10
+  button(type="button", class="btn btn-secondary", onclick = "doBump()") Press Me
+  #bump 
+    p Bump the count. 
+  script(type='text/javascript').
+    let count = 0
+    let bump = 1
+    function doBump(){
+      count+=bump 
+      bump++
+      document.getElementById("bump").innerHTML='Count '+count + "with bump "+ bump
+      }
+  a(href='restuarant') Restuarant page
