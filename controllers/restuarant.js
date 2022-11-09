@@ -1,8 +1,15 @@
 var restuarant = require('../models/restuarant'); 
  
 // List of all restuarants 
-exports.restuarant_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: restuarant list'); 
+exports.restuarant_list = async function(req, res) { 
+    try{ 
+        therestuarants = await restuarant.find(); 
+        res.send(therestuarants); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific restuarant. 
