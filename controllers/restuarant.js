@@ -1,10 +1,10 @@
 var restuarant = require('../models/restuarant'); 
  
-// List of all restuarants 
+// List of all restuarant 
 exports.restuarant_list = async function(req, res) { 
     try{ 
-        therestuarants = await restuarant.find(); 
-        res.send(therestuarants); 
+        therestuarant = await restuarant.find(); 
+        res.send(therestuarant); 
     } 
     catch(err){ 
         res.status(500); 
@@ -30,4 +30,17 @@ exports.restuarant_delete = function(req, res) {
 // Handle restuarant update form on PUT. 
 exports.restuarant_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: restuarant update PUT' + req.params.id); 
+}; 
+
+// VIEWS 
+// Handle a show all view 
+exports.restuarant_view_all_Page = async function(req, res) { 
+    try{ 
+        therestuarant = await restuarant.find(); 
+        res.render('restuarant', { title: 'restuarant Search Results', results: therestuarant }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 

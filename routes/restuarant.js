@@ -7,3 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+var express = require('express'); 
+const restuarant_controlers= require('../controllers/restuarant'); 
+var router = express.Router(); 
+ 
+/* GET restuarants */ 
+router.get('/', restuarant_controlers.restuarant_view_all_Page ); 
+module.exports = router; 
