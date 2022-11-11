@@ -13,18 +13,18 @@ router.get('/', api_controller.api);
 /// restuarant ROUTES /// 
  
 // POST request for creating a restuarant.  
-router.post('/restuarants', restuarant_controller.restuarant_create_post); 
+router.post('/restuarant', restuarant_controller.restuarant_create_post); 
  
 // DELETE request to delete restuarant. 
-router.delete('/restuarants/:id', restuarant_controller.restuarant_delete); 
+router.delete('/restuarant/:id', restuarant_controller.restuarant_delete); 
  
 // PUT request to update restuarant. 
-router.put('/restuarants/:id', restuarant_controller.restuarant_update_put); 
+router.put('/restuarant/:id', restuarant_controller.restuarant_update_put); 
  
 // GET request for one restuarant. 
-router.get('/restuarants/:id', restuarant_controller.restuarant_detail); 
+router.get('/restuarant/:id', restuarant_controller.restuarant_detail); 
  
 // GET request for list of all restuarant items. 
-router.get('/restuarants', restuarant_controller.restuarant_list); 
+router.get('/restuarant', restuarant_controller.restuarant_list); 
  
 module.exports = router; 
