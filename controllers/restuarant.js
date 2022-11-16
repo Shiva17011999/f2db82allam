@@ -91,3 +91,44 @@ exports.restuarant_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+// Handle a show one view with id specified by query 
+exports.restuarant_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await restuarant.findById( req.query.id) 
+        res.render('restuarantdetails',  
+{ title: 'restuarant Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle building the view for creating a restuarant. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.restuarant_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('restuarantcreate', { title: 'Restuarant Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle building the view for updating a restuarant. 
+// query provides the id 
+exports.restuarant_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await restuarant.findById(req.query.id) 
+        res.render('restuarantupdate', { title: 'restuarant Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

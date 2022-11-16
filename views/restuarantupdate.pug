@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let restuarantid = toShow._id 
+  - let restuarantRating = toShow.restuarantRating
+  - let restuarantCost = toShow.restuarantCost
+  - let restuarantLocation = toShow.restuarantLocation
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{restuarantid} 
+  - let actionid = "/resource/restuarant/" + restuarantid 
+  form(id='RestuarantForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.restuarantAttr(for='restuarantRating') Restuarant Rating 
+        input#restuarantRating(type='number', name='restuarantRating', value= restuarantRating ) 
+    div.form-group 
+        label.restuarantAttr(for='restuarantCost') Restuarant Cost
+        input#restuarantSize(type='number', name='restuarantCost', value= restuarantCost ) 
+    div.form-group 
+        label.restuarantAttr(for='restuarantLocation') Restuarant Location 
+        input#restuarantLocation(type='text', name='restuarantLocation', value= restuarantLocation ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['RestuarantForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
