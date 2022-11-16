@@ -45,9 +45,17 @@ exports.restuarant_create_post = async function(req, res) {
     }   
 }; 
  
-// Handle restuarant delete form on DELETE. 
-exports.restuarant_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: restuarant delete DELETE ' + req.params.id); 
+// Handle Restuarant delete on DELETE. 
+exports.restuarant_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await restuarant.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle restuarant update form on PUT. 
