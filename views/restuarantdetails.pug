@@ -2,21 +2,23 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let restuarantid = toShow._id
-  - let restuarantRating = toShow.restuarantRating
-  - let restuarantCost = toShow.restuarantCost 
-  - let restuarantLocation = toShow.restuarantLocation 
-  div 
-    div.row 
-      div(class='restuarantAttr mr-3') restuarant ID is: 
-      div #{restuarantid} 
-    div.row 
-      div(class='restuarantAttr mr-3') restuarant Rating is: 
-      div #{restuarantRating} 
-    div.row 
-      div(class='restuarantAttr mr-3') restuarant Cost is: 
-      div #{restuarantCost} 
-    div.row 
-      div(class='restuarantAttr mr-3') restuarant Location is: 
-      div #{restuarantLocation} 
+  if (toShow == null) 
+    h2 No instance to display 
+  else
+    - let restuarantid = toShow._id
+    - let restuarantRating = toShow.restuarantRating
+    - let restuarantCost = toShow.restuarantCost 
+    - let restuarantLocation = toShow.restuarantLocation 
+    div 
+        div.row 
+        div(class='restuarantAttr mr-3') restuarant ID is: 
+        div #{restuarantid} 
+        div.row 
+        div(class='restuarantAttr mr-3') restuarant Rating is: 
+        div #{restuarantRating} 
+        div.row 
+        div(class='restuarantAttr mr-3') restuarant Cost is: 
+        div #{restuarantCost} 
+        div.row 
+        div(class='restuarantAttr mr-3') restuarant Location is: 
+        div #{restuarantLocation} 

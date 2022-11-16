@@ -20,4 +20,6 @@ router.get('/create', restuarant_controllers.restuarant_create_Page);
 router.get('/detail', restuarant_controllers.restuarant_view_one_Page); 
 /* GET create update page */ 
 router.get('/update', restuarant_controllers.restuarant_update_Page); 
+/* GET delete restuarant page */ 
+router.get('/delete', restuarant_controllers.restuarant_delete_Page); 
 module.exports = router; 
