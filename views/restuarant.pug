@@ -1,11 +1,13 @@
 extends layout
 block content
   h1= title
-  - let results = [{restuarantRating:3.5, restuarantCost:400.00, restuarantLocation: "Maryville"},{restuarantRating:4.5 , restuarantCost:700.00, restuarantLocation: "Saint Joe"},{restuarantRating:4.9 , restuarantCost:100.00, restuarantLocation: "Omaha"}]
+  - let results = result;
   div(class="container-fluid")
-  div(class="row")
+  div(class="row m-1")
     each temp,index in results
-        div(class="col-sm-2" onclick=`buy(${index})`)  #{temp.restuarantRating} -  #{temp.restuarantCost} - #{temp.restuarantLocation}
+      - let destination = `dispatch(\"/restuarant/update?id=${temp._id}\")` 
+      div(class="col-sm-2")  #{temp.restuarantRating} -  #{temp.restuarantCost} - #{temp.restuarantLocation}
+       button.btn( class="btn-primary ml-1", onclick= destination) Update 
   br
   div(class="container-fluid")
     div(class="row")
@@ -16,3 +18,6 @@ block content
     function buy(indexNum) {
       alert(`You purchased item ${indexNum}`);
     }
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
