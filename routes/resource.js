@@ -6,7 +6,7 @@ var api_controller = require('../controllers/api');
 var restuarant_controller = require('../controllers/restuarant'); 
  
 /// API ROUTE /// 
- 
+
 // GET resources base. 
 router.get('/', api_controller.api); 
  

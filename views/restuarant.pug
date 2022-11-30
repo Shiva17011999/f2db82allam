@@ -2,12 +2,16 @@ extends layout
 block content
   h1= title
   - let results = result;
+  a(class="btn btn-primary" href="/restuarant/create") Create
+
   div(class="container-fluid")
   div(class="row m-1")
     each temp,index in results
       - let destination = `dispatch(\"/restuarant/update?id=${temp._id}\")` 
       div(class="col-sm-2")  #{temp.restuarantRating} -  #{temp.restuarantCost} - #{temp.restuarantLocation}
-       button.btn( class="btn-primary ml-1", onclick= destination) Update 
+       button.btn( class="btn-primary ml-1", onclick= destination) Update
+       a(class="btn btn-primary" href="/restuarant/delete?id=${temp._id}") Delete
+       a(class="btn btn-primary" href="/restuarant/details?id=${temp._id}") Details
   br
   div(class="container-fluid")
     div(class="row")

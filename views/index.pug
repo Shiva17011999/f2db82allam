@@ -1,16 +1,12 @@
-block content
-  h1= title
-  p Welcome to lab 11  #{title}
-  p This is PUG Lab 11
-  button(type="button", class="btn btn-secondary", onclick = "doBump()") Press Me
-  #bump 
-    p Bump the count. 
-  script(type='text/javascript').
-    let count = 0
-    let bump = 1
-    function doBump(){
-      count+=bump 
-      bump++
-      document.getElementById("bump").innerHTML='Count '+count + "with bump "+ bump
-      }
-  a(href='restuarant') Restuarant page
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/restuarant") Take me to restaurents 
+    br 
+    a(href="/logout") Logout 

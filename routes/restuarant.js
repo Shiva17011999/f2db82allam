@@ -11,15 +11,21 @@ module.exports = router;
 var express = require('express'); 
 const restuarant_controllers= require('../controllers/restuarant'); 
 var router = express.Router(); 
- 
+const secured = (req, res, next) => { 
+  if (req.user){ 
+    return next(); 
+  } 
+  req.session.returnTo = req.originalUrl; 
+  res.redirect("/login"); 
+} 
 /* GET restuarants */ 
 router.get('/', restuarant_controllers.restuarant_view_all_Page ); 
 /* GET create restuarant page */ 
-router.get('/create', restuarant_controllers.restuarant_create_Page); 
+router.get('/create', secured,restuarant_controllers.restuarant_create_Page); 
 /* GET detail restuarant page */ 
-router.get('/detail', restuarant_controllers.restuarant_view_one_Page); 
+router.get('/detail', secured,restuarant_controllers.restuarant_view_one_Page); 
 /* GET create update page */ 
-router.get('/update', restuarant_controllers.restuarant_update_Page); 
+router.get('/update',secured, restuarant_controllers.restuarant_update_Page); 
 /* GET delete restuarant page */ 
-router.get('/delete', restuarant_controllers.restuarant_delete_Page); 
+router.get('/delete',secured, restuarant_controllers.restuarant_delete_Page); 
 module.exports = router; 
